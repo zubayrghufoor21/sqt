@@ -1,53 +1,76 @@
-# Computing 2 Coursework Submission.
-**CID**: [YOUR CID]
+# Computing 2 SQT Submission.
+In this code repository is a module that can simulate a game of Tetris
+`web-app/common/Tetris.js`
+and a web app to play the game.
+`web-app/browser/`
 
-This is the submission template for your Computing 2 Applications coursework submission.
+The module and app will play a tetris game,
+but are missing some features that you might expect.
+(For comparison, see https://tetris.com/play-tetris)
 
-## Checklist
-### Install dependencies locally
-This template relies on a a few packages from the Node Package Manager, npm.
-To install them run the following commands in the terminal.
-```properties
-npm install
-npm install --prefix ./web-app/common
-```
-These won't be uploaded to your repository because of the `.gitignore`.
-I'll run the same commands when I download your repos.
+This assignment will have you implement some additional features,
+which are targeted to the module assessment criteria.
 
-### Game Module – API
-*You will produce an API specification, i.e. a list of function names and their signatures, for a Javascript module that represents the state of your game and the operations you can perform on it that advances the game or provides information.*
+## Tasks ##
+### Colourful blocks
+In Tetris, each piece has a colour. In this version they're all blue.
 
-- [ ] Include a `.js ` module file in `/web-app/common` containing the API using `jsdoc`.
-- [ ] Update `/jsdoc.json` to point to this module in `.source.include` (line 7)
-- [ ] Compile jsdoc using the run configuration `Generate Docs`
-- [ ] Check the generated docs have compiled correctly.
+**Change the css such that each piece has a different colour.**
 
-### Game Module – Implementation
-*You will implement, in Javascript, the module you specified above. Such that your game can be simulated in code, e.g. in the debug console.*
+### Next Tetromino
+Part of the game state is the next tetromino to descend after the current one
+locks.
+In most tetris games this is displayed to the player.
+In this module the next tetromino is stored as a property of the game object.
+`game.next_tetromino`.
 
-- [ ] The file above should be fully implemented.
+**Add a display of the next tetromino to the sidebar**
 
-### Unit Tests – Specification
-*For the Game module API you have produced, write a set of unit tests descriptions that specify the expected behaviour of one aspect of your API, e.g. you might pick the win condition, or how the state changes when a move is made.*
+### Hold Piece
+One feature you often see in Tetris games is the ability to *hold* a piece.
+If you press hold, `c`, then the current piece is taken off the field and held.
+If there was no piece already held, then the next piece is deployed,
+otherwise if there is a piece already held then it is deployed.
+In each case the piece is deployed from the top of the field.
+Once you hold a piece, you can't hold again until you have locked in a piece.
 
-- [ ] Write unit test definitions in `/web-app/tests`.
-- [ ] Check the headings appear in the Testing sidebar.
+See https://tetris.com/play-tetris for an example of how this works.
 
-### Unit Tests – Implementation
-*Implement in code the unit tests specified above.*
+**You are going to implement the hold mechanism.**
+1. Add to the documentation of type definition of a `Tetris.Game` (line 16) two fields:
+    1. `held_tetromino`, the tetromino you are holding.
+    2. `can_hold`, a boolean that determines if holding is allowed.
+2. Modify the `Tetris.new_game()` function to have these new fields, and have sensible initial values.
+3. Modify `Tetris.next_turn()` so that the next turn returned also has these two fields.
+4. Document in **jsdoc** a new function `Tetris.hold()` that takes a game, and returns a new game with the current tetromino held.
+5. Implement the `Tetris.hold()` function as specified.
+6. Modify `main.js` to listen for the `c` key being pressed, and holds the piece when triggered.
+7. Add a display of the held piece to the UI.
 
-- [ ] Implement the tests above.
+### Hold Piece - Unit Tests
+We are going to test three behaviours of the hold mechanism.
+1. A held piece can be retrieved on a subsequent turn.
+2. Hold can't be performed twice in a row.
+3. If there is no held piece and a hold performed, the *next tetromino* is deployed.
 
-### Web Application
-*Produce a web application that allows a user to interface with your game module.*
+Use the starter code in `web-app/tests/Tetris.test.js`.
 
-- Implement in `/web-app/browser`
-  - [ ] `index.html`
-  - [ ] `default.css`
-  - [ ] `main.js`
-  - [ ] Any other files you need to include.
+For the first test, I have specified using Given-When-Then for this behaviour
+and have implemented the test. You need not modify this one.
 
-### Finally
-- [ ] Push to GitHub.
-- [ ] Sync the changes.
-- [ ] Check submission on GitHub website.
+For the second test, I have provided a Given-When-Then specification for the test.
+**You should implement this test**
+
+The third test,
+*If there is no held piece and a hold performed, the **next tetromino** is deployed.*,
+needs to be further specified and implemented by you.
+
+**Further specify and implement this test**
+
+## Submission Details
+For this SQT, Fork this repository into your own GitHub.
+When you are complete send me an email with a link to your github repo.
+
+Please submit before 16:00 on Friday 19th August 2022.
+
+Please do get in contact with any questions.
