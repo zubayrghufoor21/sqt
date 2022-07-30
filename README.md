@@ -24,6 +24,8 @@ In most tetris games this is displayed to the player.
 In this module the next tetromino is stored as a property of the game object.
 `game.next_tetromino`.
 
+* Unlike in the online game, you should only show the **one** next piece.
+
 **Add a display of the next tetromino to the sidebar**
 
 ### Hold Piece
