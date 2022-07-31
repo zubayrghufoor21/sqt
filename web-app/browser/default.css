@@ -21,6 +21,15 @@
     --palette-secondary0: #345e75;
     --palette-secondary1: #3daee9;
 
+    --palette-I: #039800;
+    --palette-J: #ff0019;
+    --palette-L: #d0cd00;
+    --palette-O: #e85d04;
+    --palette-S: #07fade;
+    --palette-T: #0022ff;
+    --palette-Z: #d400ff;
+    --palette-current: #6aff00;
+
     --grid-background: #1143c4;
 }
 
@@ -138,40 +147,40 @@ footer
 
 .cell.I
 {
-    background-color: var(--palette-secondary1);
+    background-color: var(--palette-I);
 }
 
 .cell.J
 {
-    background-color: var(--palette-secondary1);
+    background-color: var(--palette-J);
 }
 
 .cell.L
 {
-    background-color: var(--palette-secondary1);
+    background-color: var(--palette-L);
 }
 
 .cell.O
 {
-    background-color: var(--palette-secondary1);
+    background-color: var(--palette-O);
 }
 
 .cell.S
 {
-    background-color: var(--palette-secondary1);
+    background-color: var(--palette-S);
 }
 
 .cell.T
 {
-    background-color: var(--palette-secondary1);
+    background-color: var(--palette-T);
 }
 
 .cell.Z
 {
-    background-color: var(--palette-secondary1);
+    background-color: var(--palette-Z);
 }
 
 .cell.current
 {
-    background-color: var(--palette-accent2);
+    background-color: var(--palette-current);
 }
