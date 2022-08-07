@@ -51,6 +51,8 @@ const update_grid = function () {
     );
 };
 
+
+
 // Don't allow the player to hold down the rotate key.
 let key_locked = false;
 
@@ -83,6 +85,9 @@ const timer_function = function () {
     update_grid();
     setTimeout(timer_function, 500);
 };
+
+// build function to display next_tetromino//
+
 
 setTimeout(timer_function, 500);
 

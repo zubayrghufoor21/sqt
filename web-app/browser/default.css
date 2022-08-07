@@ -84,6 +84,12 @@ aside
     position: absolute;
     top: var(--header-height);
     width: var(--sidebar-width);
+    background-color: lightgrey;
+}
+
+.sidebar .nextPiece
+{
+
 }
 
 main
