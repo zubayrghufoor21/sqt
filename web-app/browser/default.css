@@ -85,7 +85,16 @@ aside
     position: absolute;
     top: var(--header-height);
     width: var(--sidebar-width);
-    background-color: blue
+    background-color: rgb(19, 19, 47)
+}
+
+
+.sidebar .pieceImage
+{
+    height: 250px;
+    width: 250px;
+    margin: 20px;
+    background-color: rgb(0, 73, 86);
 }
 
 main
