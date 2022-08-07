@@ -76,20 +76,16 @@ header h1
     margin: 0;
 }
 
+
 aside
 {
     background: var(--palette-base1);
     height: calc(100% - var(--header-height) - var(--footer-height));
-    /* max-width: var(--sidebar-max-width); */
+    max-width: var(--sidebar-max-width);
     position: absolute;
     top: var(--header-height);
     width: var(--sidebar-width);
-    background-color: lightgrey;
-}
-
-.sidebar .nextPiece
-{
-
+    background-color: blue
 }
 
 main
@@ -190,3 +186,11 @@ footer
 {
     background-color: var(--palette-current);
 }
+
+/*
+.box2 {
+    height: 10px;
+    width: 10px;
+    color: red;
+}
+*/
