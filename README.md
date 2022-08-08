@@ -11,7 +11,7 @@ but are missing some features that you might expect.
 This assignment will have you implement some additional features,
 which are targeted to the module assessment criteria.
 
-## Setuo
+## Setup
 * Run `npm install` in the root directory to install server dependencies (express)
 * Run `npm install --prefix ./web-app/common` to install common dependencies (ramda)
 
