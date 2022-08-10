@@ -32,11 +32,11 @@ const cells = range(grid_rows).map(function () {
 
 const minicells = range(4).map(function () {
     const row = document.createElement("div");
-    row.className = "row";
+    row.className = "minirow";
 
     const rows = range(4).map(function () {
         const cell = document.createElement("div");
-        cell.className = "cell";
+        cell.className = "minicell";
 
         row.append(cell);
 
@@ -50,11 +50,23 @@ const minicells = range(4).map(function () {
 const update_minigrid = function () {
     game.next_tetromino.forEach(function (line, line_index) {
         line.forEach(function (block, column_index) {
-            const cell = cells[line_index][column_index];
-            cell.className = `cell ${block}`;
+            const minicell = minicells[line_index][column_index];
+            minicell.className = `cell ${block}`;
         });
     });
 
+    Tetris.next_tetromino().forEach(
+        function (coord) {
+            try {
+                const minicell = minicells[coord[1]][coord[0]];
+                minicell.className = (
+                    `cell current ${game.next_tetromino.block_type}`
+                );
+            } catch (ignore) {
+
+            }
+        }
+    );
 };
 
 const update_grid = function () {

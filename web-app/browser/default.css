@@ -93,21 +93,22 @@ aside
     color: white;
     font-family: 'Courier New', Courier, monospace;
     font-size: xx-large;
-    margin-left: 40px;
-    margin-top: 20px;
+    margin-left: 48px;
+    margin-top: 25px;
 }
 
 .minigrid
 {
     aspect-ratio: var(--grid-aspect);
     background: var(--palette-base0);
-    margin: 25px;
+    margin: 50px;
+    margin-bottom: 0px;
     margin-left: auto;
     margin-right: auto;
     padding: 0;
     position: relative;
-    height: 250px;
-    width: 250px;
+    height: 200px;
+    width: 200px;
 }
 
 main
@@ -162,6 +163,27 @@ footer
     padding: 0;
     position: relative;
     width: calc(100% / var(--grid-columns));
+}
+
+.minirow
+{
+    height: calc(100% / 4);
+    margin: auto;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    position: relative;
+}
+
+.minicell
+{
+    background-size: cover;
+    border: 0.5px solid var(--palette-base3);
+    display: inline-block;
+    height: 100%;
+    margin: 0;
+    width: calc(100% / 4);
+    position: relative;
 }
 
 .cell.empty
