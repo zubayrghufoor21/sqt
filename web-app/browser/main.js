@@ -86,7 +86,7 @@ const timer_function = function () {
     setTimeout(timer_function, 500);
 };
 
-// build function to display next_tetromino//
+// build function for mini grid to display next_tetromino//
 
 
 setTimeout(timer_function, 500);

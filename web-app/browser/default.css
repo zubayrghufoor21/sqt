@@ -88,13 +88,26 @@ aside
     background-color: rgb(19, 19, 47)
 }
 
-
-.sidebar .pieceImage
+.nextUp
 {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: xx-large;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.minigrid
+{
+    aspect-ratio: var(--grid-aspect);
+    background: var(--palette-base0);
+    margin: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    position: relative;
     height: 250px;
     width: 250px;
-    margin: 20px;
-    background-color: rgb(0, 73, 86);
 }
 
 main
@@ -195,11 +208,3 @@ footer
 {
     background-color: var(--palette-current);
 }
-
-/*
-.box2 {
-    height: 10px;
-    width: 10px;
-    color: red;
-}
-*/
