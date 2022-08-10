@@ -4,6 +4,10 @@
     --grid-rows: 6;
     --grid-aspect: var(--grid-columns) / var(--grid-rows);
 
+    /*--minigrid-columns: 4;
+    --minigrid-rows: 4;
+    --grid-aspect: var(--minigrid-columns) / var(--minigrid-rows);*/
+
     --footer-height: 48px;
     --header-height: 64px;
     --sidebar-width: clamp(100px, 25%, 300px);
@@ -88,7 +92,7 @@ aside
     background-color: rgb(19, 19, 47)
 }
 
-.nextUp
+.message
 {
     color: white;
     font-family: 'Courier New', Courier, monospace;

@@ -29,6 +29,7 @@ const cells = range(grid_rows).map(function () {
     return rows;
 });
 
+
 const update_grid = function () {
     game.field.forEach(function (line, line_index) {
         line.forEach(function (block, column_index) {
@@ -50,8 +51,6 @@ const update_grid = function () {
         }
     );
 };
-
-
 
 // Don't allow the player to hold down the rotate key.
 let key_locked = false;
