@@ -15,5 +15,5 @@ app.use("/common/", express.static("web-app/common"));
 app.use("/docs/", express.static("docs"));
 
 app.listen(port, function () {
-    console.log(`Listening on port ${port} – http://localhost:${port}`);
+    console.log(`Listening on port ${port} – http://localhost:8080`);
 });
