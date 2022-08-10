@@ -9,6 +9,7 @@ document.documentElement.style.setProperty("--grid-rows", grid_rows);
 document.documentElement.style.setProperty("--grid-columns", grid_columns);
 
 const grid = document.getElementById("grid");
+const minigrid = document.getElementById("minigrid");
 
 const range = (n) => Array.from({"length": n}, (ignore, k) => k);
 
@@ -26,6 +27,7 @@ const cells = range(grid_rows).map(function () {
     });
 
     grid.append(row);
+    minigrid.append(row);
     return rows;
 });
 
@@ -43,6 +45,28 @@ const update_grid = function () {
                 const cell = cells[coord[1]][coord[0]];
                 cell.className = (
                     `cell current ${game.current_tetromino.block_type}`
+                );
+            } catch (ignore) {
+
+            }
+        }
+    );
+};
+
+const update_minigrid = function () {
+    game.field.forEach(function (line, line_index) {
+        line.forEach(function (block, column_index) {
+            const cell = cells[line_index][column_index];
+            cell.className = `cell ${block}`;
+        });
+    });
+
+    Tetris.tetromino_coordiates(game.next_Tetromino, game.position).forEach(
+        function (coord) {
+            try {
+                const cell = cells[coord[1]][coord[0]];
+                cell.className = (
+                    `cell current ${game.next_Tetromino.block_type}`
                 );
             } catch (ignore) {
 
@@ -92,3 +116,4 @@ const timer_function = function () {
 setTimeout(timer_function, 500);
 
 update_grid();
+update_minigrid();
