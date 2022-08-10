@@ -4,10 +4,6 @@
     --grid-rows: 6;
     --grid-aspect: var(--grid-columns) / var(--grid-rows);
 
-    /*--minigrid-columns: 4;
-    --minigrid-rows: 4;
-    --grid-aspect: var(--minigrid-columns) / var(--minigrid-rows);*/
-
     --footer-height: 48px;
     --header-height: 64px;
     --sidebar-width: clamp(100px, 25%, 300px);

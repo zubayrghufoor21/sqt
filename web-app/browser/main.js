@@ -9,6 +9,7 @@ document.documentElement.style.setProperty("--grid-rows", grid_rows);
 document.documentElement.style.setProperty("--grid-columns", grid_columns);
 
 const grid = document.getElementById("grid");
+const minigrid = document.getElementById("minigrid");
 
 const range = (n) => Array.from({"length": n}, (ignore, k) => k);
 
@@ -29,6 +30,32 @@ const cells = range(grid_rows).map(function () {
     return rows;
 });
 
+const minicells = range(4).map(function () {
+    const row = document.createElement("div");
+    row.className = "row";
+
+    const rows = range(4).map(function () {
+        const cell = document.createElement("div");
+        cell.className = "cell";
+
+        row.append(cell);
+
+        return cell;
+    });
+
+    minigrid.append(row);
+    return rows;
+});
+
+const update_minigrid = function () {
+    game.next_tetromino.forEach(function (line, line_index) {
+        line.forEach(function (block, column_index) {
+            const cell = cells[line_index][column_index];
+            cell.className = `cell ${block}`;
+        });
+    });
+
+};
 
 const update_grid = function () {
     game.field.forEach(function (line, line_index) {
@@ -51,6 +78,7 @@ const update_grid = function () {
         }
     );
 };
+
 
 // Don't allow the player to hold down the rotate key.
 let key_locked = false;
@@ -91,3 +119,4 @@ const timer_function = function () {
 setTimeout(timer_function, 500);
 
 update_grid();
+update_minigrid();
