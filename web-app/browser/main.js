@@ -31,20 +31,20 @@ const cells = range(grid_rows).map(function () {
 });
 
 const minicells = range(6).map(function () {
-    const row = document.createElement("div");
-    row.className = "minirow";
+    const minirow = document.createElement("div");
+    minirow.className = "minirow";
 
-    const rows = range(6).map(function () {
-        const cell = document.createElement("div");
-        cell.className = "minicell";
+    const minirows = range(6).map(function () {
+        const minicell = document.createElement("div");
+        minicell.className = "minicell";
 
-        row.append(cell);
+        minirow.append(minicell);
 
-        return cell;
+        return minicell;
     });
 
-    minigrid.append(row);
-    return rows;
+    minigrid.append(minirow);
+    return minirows;
 });
 
 const update_minigrid = function () {
@@ -55,7 +55,7 @@ const update_minigrid = function () {
         });
     });
 
-    Tetris.tetromino_coordiates(game.next_tetromino, game.position).forEach(
+    /*Tetris.tetromino_coordiates(game.next_tetromino, game.position).forEach(
         function (coord) {
             try {
                 const minicell = minicells[coord[1]][coord[0]];
@@ -66,7 +66,7 @@ const update_minigrid = function () {
 
             }
         }
-    );
+    );*/
 
     game.next_tetromino.grid.forEach(
         function (coord) {
