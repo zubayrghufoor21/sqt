@@ -111,6 +111,20 @@ aside
     width: 200px;
 }
 
+.holdgrid
+{
+    aspect-ratio: var(--grid-aspect);
+    background-color: var(--palette-base0);
+    margin: 50px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    position: relative;
+    height: 200px;
+    width: 200px;
+}
+
 main
 {
     background: var(--palette-base2);
@@ -186,6 +200,27 @@ footer
     position: relative;
 }
 
+.holdrow
+{
+    height: calc(100% / 6);
+    margin: auto;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    position: relative;
+}
+
+.holdcell
+{
+    background-size: cover;
+    border: 0.5px solid var(--palette-base3);
+    display: inline-block;
+    height: 100%;
+    margin: 0;
+    width: calc(100% / 6);
+    position: relative;
+}
+
 .cell.empty
 {
     
@@ -231,7 +266,6 @@ footer
     background-color: var(--palette-current);
 }
 
-
 .minicell.I
 {
     background-color: var(--palette-I);
@@ -263,6 +297,41 @@ footer
 }
 
 .minicell.Z
+{
+    background-color: var(--palette-Z);
+}
+
+.holdcell.I
+{
+    background-color: var(--palette-I);
+}
+
+.holdcell.J
+{
+    background-color: var(--palette-J);
+}
+
+.holdcell.L
+{
+    background-color: var(--palette-L);
+}
+
+.holdcell.O
+{
+    background-color: var(--palette-O);
+}
+
+.holdcell.S
+{
+    background-color: var(--palette-S);
+}
+
+.holdcell.T
+{
+    background-color: var(--palette-T);
+}
+
+.holdcell.Z
 {
     background-color: var(--palette-Z);
 }

@@ -4,7 +4,8 @@ const grid_columns = Tetris.field_width;
 const grid_rows = Tetris.field_height;
 const minigrid_rows = 6;
 const minigrid_columns = 6;
-
+const holdgrid_rows = 6;
+const holdgrid_columns = 6;
 
 let game = Tetris.new_game();
 
@@ -12,9 +13,13 @@ document.documentElement.style.setProperty("--grid-rows", grid_rows);
 document.documentElement.style.setProperty("--grid-columns", grid_columns);
 document.documentElement.style.setProperty("--minigrid-rows", minigrid_rows);
 document.documentElement.style.setProperty("--minigrid-columns", minigrid_columns);
+document.documentElement.style.setProperty("--holdgrid-rows", holdgrid_rows);
+document.documentElement.style.setProperty("--holdgrid-columns", holdgrid_columns);
+
 
 const grid = document.getElementById("grid");
 const minigrid = document.getElementById("minigrid");
+const holdgrid = document.getElementById("holdgrid");
 
 const range = (n) => Array.from({ "length": n }, (ignore, k) => k);
 
@@ -51,6 +56,42 @@ const minicells = range(minigrid_columns).map(function() {
     minigrid.append(minirow);
     return minirows;
 });
+
+const holdcells = range(holdgrid_columns).map(function() {
+    const holdrow = document.createElement("div");
+    holdrow.className = "holdrow";
+
+    const holdrows = range(holdgrid_rows).map(function() {
+        const holdcell = document.createElement("div");
+        holdcell.className = "minicell";
+
+        holdrow.append(holdcell);
+
+        return holdcell;
+    });
+
+    holdgrid.append(holdrow);
+    return holdrows;
+});
+
+const update_holdgrid = function() {
+
+    holdcells.forEach(function(line, line_index) {
+        line.forEach(function(block, column_index) {
+            const cell = holdcells[line_index][column_index];
+            cell.className = "holdcell";
+            cell.backgroundColor = "";
+        });
+    });
+
+    game.held_tetromino.grid.forEach(function(line, line_index) {
+        line.forEach(function(block, column_index) {
+            const holdcell = holdcells[line_index + 2][column_index + 1];
+            holdcell.className = `holdcell ${block}`;
+        });
+    });
+
+};
 
 const update_minigrid = function() {
 
@@ -93,6 +134,7 @@ const update_grid = function() {
     );
 
     update_minigrid();
+    update_holdgrid();
 };
 
 // Don't allow the player to hold down the rotate key.
@@ -118,6 +160,9 @@ document.body.onkeydown = function(event) {
     }
     if (event.key === " ") {
         game = Tetris.hard_drop(game);
+    }
+    if (event.key === "c") {
+        game = Tetris.is_held(game);
     }
     update_grid();
 };
