@@ -2,11 +2,16 @@ import Tetris from "../common/Tetris.js";
 
 const grid_columns = Tetris.field_width;
 const grid_rows = Tetris.field_height;
+const minigrid_rows = 6;
+const minigrid_columns = 6;
+
 
 let game = Tetris.new_game();
 
 document.documentElement.style.setProperty("--grid-rows", grid_rows);
 document.documentElement.style.setProperty("--grid-columns", grid_columns);
+document.documentElement.style.setProperty("--minigrid-rows", minigrid_rows);
+document.documentElement.style.setProperty("--minigrid-columns", minigrid_columns);
 
 const grid = document.getElementById("grid");
 const minigrid = document.getElementById("minigrid");
@@ -30,11 +35,11 @@ const cells = range(grid_rows).map(function () {
     return rows;
 });
 
-const minicells = range(6).map(function () {
+const minicells = range(minigrid_columns).map(function () {
     const minirow = document.createElement("div");
     minirow.className = "minirow";
 
-    const minirows = range(6).map(function () {
+    const minirows = range(minigrid_rows).map(function () {
         const minicell = document.createElement("div");
         minicell.className = "minicell";
 
@@ -51,7 +56,7 @@ const update_minigrid = function () {
     game.next_tetromino.forEach(function (line, line_index) {
         line.forEach(function (block, column_index) {
             const minicell = minicells[line_index][column_index];
-            minicell.className = `cell ${block}`;
+            minicell.className = `minicell ${block}`;
         });
     });
 
@@ -66,7 +71,7 @@ const update_minigrid = function () {
 
             }
         }
-    );*/
+    );
 
     game.next_tetromino.grid.forEach(
         function (coord) {
@@ -79,7 +84,9 @@ const update_minigrid = function () {
 
             }
         }
-    );
+    );*/
+
+
 };
 
 const update_grid = function () {
@@ -102,6 +109,8 @@ const update_grid = function () {
             }
         }
     );
+
+    update_minigrid();
 };
 
 
@@ -144,4 +153,3 @@ const timer_function = function () {
 setTimeout(timer_function, 500);
 
 update_grid();
-update_minigrid();

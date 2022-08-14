@@ -230,3 +230,39 @@ footer
 {
     background-color: var(--palette-current);
 }
+
+
+.minicell.I
+{
+    background-color: var(--palette-I);
+}
+
+.minicell.J
+{
+    background-color: var(--palette-J);
+}
+
+.minicell.L
+{
+    background-color: var(--palette-L);
+}
+
+.minicell.O
+{
+    background-color: var(--palette-O);
+}
+
+.minicell.S
+{
+    background-color: var(--palette-S);
+}
+
+.minicell.T
+{
+    background-color: var(--palette-T);
+}
+
+.minicell.Z
+{
+    background-color: var(--palette-Z);
+}
