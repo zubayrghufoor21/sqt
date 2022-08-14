@@ -59,8 +59,8 @@ const update_minigrid = function() {
             const cell = minicells[line_index][column_index];
             cell.className = "minicell";
             cell.backgroundColor = "";
-        })
-    })
+        });
+    });
 
     game.next_tetromino.grid.forEach(function(line, line_index) {
         line.forEach(function(block, column_index) {
