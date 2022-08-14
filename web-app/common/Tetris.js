@@ -26,6 +26,8 @@ const Tetris = Object.create(null);
  * @property {Tetris.Tetromino} next_tetromino The next piece to descend.
  * @property {number[]} position Where in the field is the current tetromino.
  * @property {Tetris.Score} score Information relating to the score of the game.
+ * @property {Tetris.Tetromino} held_tetromino which type tetromino is being held by the player.
+ * @property {boolean} can_hold Boolean that tells the game is a piece can be held or not depending on if a piece is already being held or not.
  */
 
 /**
@@ -297,6 +299,7 @@ const new_score = () => 0;
 Tetris.new_game = function () {
     const [current_tetromino, next_bag] = new_bag();
     const [next_tetromino, bag] = next_bag();
+    const [held_tetromino, held] = new_game();
 
     return {
         "bag": bag,
@@ -305,7 +308,8 @@ Tetris.new_game = function () {
         "game_over": false,
         "next_tetromino": next_tetromino,
         "position": starting_position,
-        "score": new_score()
+        "score": new_score(),
+        "can_hold": can_hold,
     };
 };
 
