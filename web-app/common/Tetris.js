@@ -629,7 +629,7 @@ Tetris.is_game_over = function (game) {
  * @returns {Tetris.game}
  * @returns {Tetris.tetromino} a game with the held tetromino
 */
-Tetris.is_held = function(game) {
+Tetris.hold = function(game) {
     if (game.can_hold == true) {
         game.can_hold = false;
 

@@ -35,7 +35,7 @@ const cells = range(grid_rows).map(function() {
     return rows;
 });
 
-const holdcells = range(6).map(function() {
+/*const holdcells = range(6).map(function() {
     const row = document.createElement("div");
     row.className = "row";
 
@@ -50,7 +50,7 @@ const holdcells = range(6).map(function() {
 
     holdgrid.append(row);
     return rows;
-});
+});*/
 
 const update_holdgrid = function() {
 
@@ -157,7 +157,7 @@ document.body.onkeydown = function(event) {
         game = Tetris.hard_drop(game);
     }
     if (event.key === "c") {
-        game = Tetris.is_held(game);
+        game = Tetris.hold(game);
     }
     update_grid();
 };
