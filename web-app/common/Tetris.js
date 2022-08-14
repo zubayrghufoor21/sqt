@@ -643,7 +643,6 @@ Tetris.is_held = function(game) {
             game.next_tetromino = Tetris.next_turn(game).next_tetromino;
             game.current_tetromino = held_block;
         }
-
         return game;
     } else {
         return game;
