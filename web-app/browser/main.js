@@ -52,6 +52,25 @@ const holdcells = range(6).map(function() {
     return rows;
 });
 
+const update_holdgrid = function() {
+
+    minicells.forEach(function(line, line_index) {
+        line.forEach(function(block, column_index) {
+            const cell = minicells[line_index][column_index];
+            cell.className = "minicell";
+            cell.backgroundColor = "";
+        });
+    });
+
+    game.next_tetromino.grid.forEach(function(line, line_index) {
+        line.forEach(function(block, column_index) {
+            const minicell = minicells[line_index + 2][column_index + 1];
+            minicell.className = `minicell ${block}`;
+        });
+    });
+
+};
+
 const minicells = range(minigrid_columns).map(function() {
     const minirow = document.createElement("div");
     minirow.className = "minirow";
@@ -110,6 +129,7 @@ const update_grid = function() {
     );
 
     update_minigrid();
+    update_holdgrid();
 };
 
 // Don't allow the player to hold down the rotate key.
