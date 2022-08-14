@@ -16,13 +16,13 @@ document.documentElement.style.setProperty("--minigrid-columns", minigrid_column
 const grid = document.getElementById("grid");
 const minigrid = document.getElementById("minigrid");
 
-const range = (n) => Array.from({"length": n}, (ignore, k) => k);
+const range = (n) => Array.from({ "length": n }, (ignore, k) => k);
 
-const cells = range(grid_rows).map(function () {
+const cells = range(grid_rows).map(function() {
     const row = document.createElement("div");
     row.className = "row";
 
-    const rows = range(grid_columns).map(function () {
+    const rows = range(grid_columns).map(function() {
         const cell = document.createElement("div");
         cell.className = "cell";
 
@@ -35,11 +35,11 @@ const cells = range(grid_rows).map(function () {
     return rows;
 });
 
-const minicells = range(minigrid_columns).map(function () {
+const minicells = range(minigrid_columns).map(function() {
     const minirow = document.createElement("div");
     minirow.className = "minirow";
 
-    const minirows = range(minigrid_rows).map(function () {
+    const minirows = range(minigrid_rows).map(function() {
         const minicell = document.createElement("div");
         minicell.className = "minicell";
 
@@ -52,53 +52,35 @@ const minicells = range(minigrid_columns).map(function () {
     return minirows;
 });
 
-const update_minigrid = function () {
-    game.next_tetromino.forEach(function (line, line_index) {
-        line.forEach(function (block, column_index) {
-            const minicell = minicells[line_index][column_index];
+const update_minigrid = function() {
+
+    minicells.forEach(function(line, line_index) {
+        line.forEach(function(block, column_index) {
+            const cell = minicells[line_index][column_index];
+            cell.className = "minicell";
+            cell.backgroundColor = "";
+        })
+    })
+
+    game.next_tetromino.grid.forEach(function(line, line_index) {
+        line.forEach(function(block, column_index) {
+            const minicell = minicells[line_index + 2][column_index + 1];
             minicell.className = `minicell ${block}`;
         });
     });
 
-    /*Tetris.tetromino_coordiates(game.next_tetromino, game.position).forEach(
-        function (coord) {
-            try {
-                const minicell = minicells[coord[1]][coord[0]];
-                minicell.className = (
-                    `minicell current ${game.next_tetromino.block_type}`
-                );
-            } catch (ignore) {
-
-            }
-        }
-    );
-
-    game.next_tetromino.grid.forEach(
-        function (coord) {
-            try {
-                const minicell = minicells[coord[1]][coord[0]];
-                minicell.className = (
-                    `cell current ${game.next_tetromino.block_type}`
-                );
-            } catch (ignore) {
-
-            }
-        }
-    );*/
-
-
 };
 
-const update_grid = function () {
-    game.field.forEach(function (line, line_index) {
-        line.forEach(function (block, column_index) {
+const update_grid = function() {
+    game.field.forEach(function(line, line_index) {
+        line.forEach(function(block, column_index) {
             const cell = cells[line_index][column_index];
             cell.className = `cell ${block}`;
         });
     });
 
     Tetris.tetromino_coordiates(game.current_tetromino, game.position).forEach(
-        function (coord) {
+        function(coord) {
             try {
                 const cell = cells[coord[1]][coord[0]];
                 cell.className = (
@@ -113,15 +95,14 @@ const update_grid = function () {
     update_minigrid();
 };
 
-
 // Don't allow the player to hold down the rotate key.
 let key_locked = false;
 
-document.body.onkeyup = function () {
+document.body.onkeyup = function() {
     key_locked = false;
 };
 
-document.body.onkeydown = function (event) {
+document.body.onkeydown = function(event) {
     if (!key_locked && event.key === "ArrowUp") {
         key_locked = true;
         game = Tetris.rotate_ccw(game);
@@ -141,7 +122,7 @@ document.body.onkeydown = function (event) {
     update_grid();
 };
 
-const timer_function = function () {
+const timer_function = function() {
     game = Tetris.next_turn(game);
     update_grid();
     setTimeout(timer_function, 500);
