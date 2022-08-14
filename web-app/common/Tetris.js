@@ -299,7 +299,6 @@ const new_score = () => 0;
 Tetris.new_game = function () {
     const [current_tetromino, next_bag] = new_bag();
     const [next_tetromino, bag] = next_bag();
-    const [held_tetromino, held] = new_game();
 
     return {
         "bag": bag,
@@ -309,7 +308,6 @@ Tetris.new_game = function () {
         "next_tetromino": next_tetromino,
         "position": starting_position,
         "score": new_score(),
-        "can_hold": can_hold,
     };
 };
 
