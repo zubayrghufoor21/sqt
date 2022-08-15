@@ -308,7 +308,7 @@ Tetris.new_game = function () { /* 2 */
         "next_tetromino": next_tetromino,
         "position": starting_position,
         "score": new_score(),
-        "held_tetromino": empty_block,
+        "held_tetromino": false,
         "can_hold": true
     };
 };
@@ -630,18 +630,21 @@ Tetris.is_game_over = function (game) {
  * @returns {Tetris.tetromino} a game with the held tetromino
 */
 Tetris.hold = function(game) {
+    game = R.clone(game);
     if (game.can_hold == true) {
         game.can_hold = false;
 
-        if (game.held_tetromino == empty_block) {
+        if (game.held_tetromino == false) {
             game.held_tetromino = game.current_tetromino;
             game.next_tetromino = Tetris.next_turn(game).next_tetromino;
             game.current_tetromino = game.next_tetromino;
+            game.position = starting_position;
         } else {
             const held_piece = game.held_tetromino;
             game.held_tetromino = game.current_tetromino;
             game.next_tetromino = Tetris.next_turn(game).next_tetromino;
             game.current_tetromino = held_piece;
+            game.position = starting_position;
         }
 
         return game;

@@ -35,7 +35,6 @@ describe("Hold", function () {
         function () {
             const initial_game = Tetris.hold(Tetris.new_game());
             const final_game = Tetris.hold(initial_game );
-            initial_game == final_game;
 
             if (!R.equals(initial_game, final_game)) {
                 throw new Error(
@@ -53,9 +52,18 @@ describe("Hold", function () {
         When C is pressed, and a hold performed,
         Then the piece deployed is the next tetromino`,
         function () {
-            const initial_game = Tetris.new_game(Tetris.held_tetrmonio = "");
+            const initial_game = Tetris.new_game(); //Starter tetromino state is empty (false)
+            const initial_piece = initial_game.next_tetromino;
             const final_game = Tetris.hold(initial_game);
-            Tetris.final_game(Tetris.current_tetromino) == Tetris.initial_game(Tetris.next_tetromino);
+            const final_piece = final_game.current_tetromino;
+
+            if (!R.equals(initial_piece, final_piece)) {
+                throw new Error(
+                    `The inital and final tetrominos do not match
+                    Initial: ${JSON.stringify(initial_piece)}
+                    Final:   ${JSON.stringify(final_piece)}`
+                );
+            }
         }
     );
 });

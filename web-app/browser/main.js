@@ -64,13 +64,14 @@ const update_holdgrid = function() {
         });
     });
 
-    game.next_tetromino.grid.forEach(function(line, line_index) { // When changed to held_tetromino.grid the game breaks
-        line.forEach(function(block, column_index) {
-            const holdcell = holdcells[line_index + 2][column_index + 1];
-            holdcell.className = `holdcell ${block}`;
+    if (game.held_tetromino) {
+        game.held_tetromino.grid.forEach(function(line, line_index) { // When changed to held_tetromino.grid the game breaks
+            line.forEach(function(block, column_index) {
+                const holdcell = holdcells[line_index + 2][column_index + 1];
+                holdcell.className = `holdcell ${block}`;
+            });
         });
-    });
-
+    }
 };
 
 const minicells = range(minigrid_columns).map(function() {
