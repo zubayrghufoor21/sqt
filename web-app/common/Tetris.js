@@ -633,20 +633,22 @@ Tetris.hold = function(game) {
     if (game.can_hold == true) {
         game.can_hold = false;
 
-        if (game.held_tetromino == empty_block) { // If there is no blocks held
+        if (game.held_tetromino == empty_block) {
             game.held_tetromino = game.current_tetromino;
             game.next_tetromino = Tetris.next_turn(game).next_tetromino;
             game.current_tetromino = game.next_tetromino;
         } else {
-            const held_block = game.held_tetromino; //If no blocks are held currently
+            const held_piece = game.held_tetromino;
             game.held_tetromino = game.current_tetromino;
             game.next_tetromino = Tetris.next_turn(game).next_tetromino;
-            game.current_tetromino = held_block;
+            game.current_tetromino = held_piece;
         }
+
         return game;
     } else {
         return game;
     }
-};
+}
+
 
 export default Object.freeze(Tetris);
